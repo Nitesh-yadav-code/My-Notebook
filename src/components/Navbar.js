@@ -1,17 +1,17 @@
-import React ,{useEffect} from 'react'
+import React  from 'react'
 import {Link, useLocation} from "react-router-dom";
 
 
 function Navbar() {
   let location = useLocation();
-  useEffect(() => {
-    // console.log(location.pathname);
-  }, [location]);
+  // useEffect(() => {
+  //   console.log(location.pathname);
+  // }, [location]);
     return (
         <>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
   <div className="container-fluid">
-    <Link className="navbar-brand" to="/">Navbar</Link>
+    <Link className="navbar-brand" to="/home">Navbar</Link>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
