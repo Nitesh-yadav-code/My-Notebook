@@ -1,13 +1,15 @@
 import React, {useContext, useState} from 'react'
 import noteContext from '../context/notes/noteContext';
 
-export default function AddNote() {
+export default function AddNote(props) {
     const context = useContext(noteContext);
     const { addNote } = context;
-    const [note, setNote] = useState({title: "", description: "", tag: "default"})
+    const [note, setNote] = useState({title: "", description: "", tag: ""})
     const handleClick =(e)=>{
         e.preventDefault();
         addNote(note.title, note.description, note.tag);
+        setNote({title: "", description: "", tag: ""});
+        props.showAlert("Updated Successfully", "success");
     }
     const onChange=(e)=>{
         setNote({...note, [e.target.name]: e.target.value})
@@ -18,11 +20,11 @@ export default function AddNote() {
             <form className='my-3'>
                 <div className="mb-3">
                     <label htmlFor="exampleInputEmail1" className="form-label">Title </label>
-                    <input type="text" className="form-control" id="title" name='title' aria-describedby="emailHelp" onChange={onChange} minLength={5} required />
+                    <input type="text" className="form-control" id="title" name='title' aria-describedby="emailHelp" value={note.title} onChange={onChange} minLength={5} required />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="description" className="form-label">Description</label>
-                    <input type="text" className="form-control" id="description" name='description' onChange={onChange}  minLength={5} required/>
+                    <input type="text" className="form-control" id="description" name='description' value={note.description} onChange={onChange}  minLength={5} required/>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="tag" className="form-label">Tag</label>
